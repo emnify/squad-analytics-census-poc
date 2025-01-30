@@ -1,0 +1,10 @@
+---
+dataset:test-wp-sql:
+  type: sql
+  name: test_wp_sql
+  query: "SELECT \n    '0019V00000dUosOQAS' AS id,\n    53006.58012 AS Monthly_Data_Usage_per_SIM__c,\n
+    \   555 AS Active_SIMs__c,\n    308 AS Suspended_SIMs__c,\n    279 AS Registered_SIMs__c,\n
+    \   '0-ENABLED' AS ORG_Status__c"
+  description:
+  icon:
+  connection: data_warehouse:redshift
