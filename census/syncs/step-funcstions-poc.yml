@@ -13,6 +13,9 @@ sync:step-funcstions-poc:
     triggers:
       schedule:
         frequency: never
+      dbt_cloud:
+        project_id: '70471823396007'
+        job_id: '70471823421798'
   destination:
     connection_identifier: destination:salesforce-1
     object_identifier: Account
