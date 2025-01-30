@@ -1,0 +1,8 @@
+---
+dataset:test1:
+  type: sql
+  name: test1
+  query: select * from census_poc.salesforce_user
+  description: 'testing slav :P '
+  icon:
+  connection: data_warehouse:redshift

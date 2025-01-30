@@ -1,0 +1,69 @@
+---
+sync:redshift-dataset-salesforce:
+  paused: false
+  label: Redshift_Dataset_Salesforce_test1
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
+  destination:
+    connection_identifier: destination:salesforce-1
+    object_identifier: Contact
+  source:
+    type: dataset
+    connection_identifier: data_warehouse:redshift
+    object_identifier: dataset:public-user
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: email
+    to:
+      field_name: Email
+    is_primary_identifier: true
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: first_name
+    to:
+      field_name: FirstName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: last_name
+    to:
+      field_name: LastName
+    preserve_values: false
+  - from:
+      type: column
+      data:
+        column_name: organisation_id
+    to:
+      field_name: AccountId
+      lookup_object:
+        object_identifier: Account
+        field_to_match_by: ORG_ID__c
+    preserve_values: false
+  advanced_configuration:
+    bulk_id_lookup: true
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
+  sync_behavior_family: mapRecords

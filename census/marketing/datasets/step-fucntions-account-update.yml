@@ -1,0 +1,10 @@
+---
+dataset:step-fucntions-account-update:
+  type: sql
+  name: account_update
+  query: "SELECT \r\n    '0019V00000dUosOQAS' AS id,\r\n    53006.58012 AS Monthly_Data_Usage_per_SIM__c,\r\n
+    \   555 AS Active_SIMs__c,\r\n    308 AS Suspended_SIMs__c,\r\n    279 AS Registered_SIMs__c,\r\n
+    \   '0-ENABLED' AS ORG_Status__c\r\n"
+  description:
+  icon:
+  connection: data_warehouse:redshift
