@@ -1,0 +1,17 @@
+---
+dataset:testhhhh:
+  type: sql
+  name: testhhhh
+  query: "SELECT \r\n    'fa00f95cc3e30305420d1d530e8d5745e565c53247ef48962ce09f2b5cf24a14'
+    AS email_hash,\r\n    'Lead' AS sobject,\r\n    'SQL' AS stage_name,\r\n    250
+    AS conversion_rating,\r\n    '2025-01-31 03:35:37' AS cet_timestamp,\r\n    'Granted'
+    AS ad_user_data,\r\n    'Granted' AS ad_personalization,\r\n    '00QW700000RPv1yMAD'
+    AS id\r\nUNION ALL\r\nSELECT \r\n    'fa00f95cc3e30305420d1d530e8d5745e565c53247ef48962ce09f2b5cf24a14',
+    \r\n    'Lead', \r\n    'Prospect', \r\n    0, \r\n    '2025-01-31 03:25:05',
+    \r\n    'Granted', \r\n    'Granted', \r\n    '00QW700000RPv1yMAD'\r\nUNION ALL\r\nSELECT
+    \r\n    '8937354fcf9c46b6e5571583ebfb856f295b83067d0ec2e81ae22d8d4ae06dfa', \r\n
+    \   'Lead', \r\n    'Converted', \r\n    0, \r\n    '2025-01-30 22:16:45', \r\n
+    \   'Granted', \r\n    'Granted', \r\n    '00QW700000QsEBtMAN'\r\n\r\n"
+  description:
+  icon:
+  connection: data_warehouse:redshift
