@@ -1,0 +1,31 @@
+---
+dataset:test-google-ads-conversion-enhanced-rating:
+  type: sql
+  name: test_google_ads_conversion_enhanced_rating
+  query: |-
+    SELECT
+        '0019V00000kdByQQAU' AS id,
+        'Account' AS sobject,
+        'Prospecting' AS stage_name,
+        'EAIaIQobChMI8Zz9' AS gclid_c,
+        4.5 AS conversion_rating,
+        '2023-10-01 12:34:56' AS cet_timestamp
+    UNION ALL
+    SELECT
+        '0019V00000kciiIQAQ' AS id,
+        'Contact' AS sobject,
+        'Qualification' AS stage_name,
+        'EAIaIQobChMI9Zz8' AS gclid_c,
+        3.8 AS conversion_rating,
+        '2023-10-02 14:22:33' AS cet_timestamp
+    UNION ALL
+    SELECT
+        '0019V00000kdByJQAU' AS id,
+        'Opportunity' AS sobject,
+        'Closed Won' AS stage_name,
+        'EAIaIQobChMI7Zz7' AS gclid_c,
+        5.0 AS conversion_rating,
+        '2023-10-03 16:45:12' AS cet_timestamp;
+  description:
+  icon:
+  connection: data_warehouse:redshift
