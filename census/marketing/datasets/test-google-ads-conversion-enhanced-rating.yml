@@ -1,7 +1,7 @@
 ---
 dataset:test-google-ads-conversion-enhanced-rating:
   type: sql
-  name: test_google_ads_conversion_rating
+  name: google_ads_conversion_rating_dataset
   query: |-
     SELECT
         '0019V00000kdByQQAU' AS id,
