@@ -1,7 +1,7 @@
 ---
 dataset:testhhhh:
   type: sql
-  name: testhhhh
+  name: test_google_ads_conversion_rating_en
   query: "SELECT \r\n    'fa00f95cc3e30305420d1d530e8d5745e565c53247ef48962ce09f2b5cf24a14'
     AS email_hash,\r\n    'Lead' AS sobject,\r\n    'SQL' AS stage_name,\r\n    250
     AS conversion_rating,\r\n    '2025-01-31 03:35:37' AS cet_timestamp,\r\n    'Granted'
