@@ -1,7 +1,7 @@
 ---
 sync:poc-google-ads-conversion-enhanced-rating:
   paused: false
-  label: poc_google_ads_conversion_enhanced_rating
+  label: google_ads_conversion
   behavior:
     operation: mirror
   mapping_configuration:
@@ -30,7 +30,7 @@ sync:poc-google-ads-conversion-enhanced-rating:
     to:
       field_name: cet_timestamp
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -39,7 +39,7 @@ sync:poc-google-ads-conversion-enhanced-rating:
     to:
       field_name: conversion_rating
     field_type: Double
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -48,7 +48,7 @@ sync:poc-google-ads-conversion-enhanced-rating:
     to:
       field_name: gclid_c
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -57,7 +57,7 @@ sync:poc-google-ads-conversion-enhanced-rating:
     to:
       field_name: id
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -66,7 +66,7 @@ sync:poc-google-ads-conversion-enhanced-rating:
     to:
       field_name: sobject
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   - from:
       type: column
@@ -75,7 +75,7 @@ sync:poc-google-ads-conversion-enhanced-rating:
     to:
       field_name: stage_name
     field_type: String
-    follow_source_type: true
+    follow_source_type: false
     generate_field: true
   advanced_configuration:
     input_value_mode: true
