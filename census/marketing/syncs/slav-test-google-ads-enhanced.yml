@@ -1,7 +1,7 @@
 ---
 sync:slav-test-google-ads-enhanced:
   paused: false
-  label: google_ads_enhanced
+  label: google_ads_conversion_enhanced
   behavior:
     operation: mirror
   mapping_configuration:
