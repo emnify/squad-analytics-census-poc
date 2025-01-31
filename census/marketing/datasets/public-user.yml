@@ -1,7 +1,7 @@
 ---
 dataset:public-user:
   type: sql
-  name: invited_users
+  name: invited_users_dataset
   query: "SELECT \r\n      salesforce_account.id AS account_id,\r\n      CASE \r\n
     \         WHEN REGEXP_REPLACE(SPLIT_PART(public_user.name, ' ', 2), '[[:space:]]+',
     '') = '' \r\n              THEN NULL\r\n          ELSE SPLIT_PART(public_user.name,
