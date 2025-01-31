@@ -1,6 +1,6 @@
 ---
 sync:redshift-account-update-salesforce-connection-account:
-  paused: false
+  paused: true
   label: account_update
   behavior:
     operation: update
