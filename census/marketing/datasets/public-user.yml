@@ -31,7 +31,7 @@ dataset:public-user:
     NOT LIKE '%test%'\r\nAND salesforce_account.id IS NOT NULL\r\nAND LOWER(salesforce_account.name)
     NOT LIKE '%emnify%'\r\nAND LOWER(salesforce_account.name) NOT LIKE '%test%'\r\nAND
     salesforce_account.is_deleted = 'f'\r\nORDER BY \r\n        public_user.created
-    DESC, \r\n        salesforce_account.id"
+    DESC, \r\n        salesforce_account.id\r\nLIMIT 1000"
   description:
   icon:
   connection: data_warehouse:redshift
