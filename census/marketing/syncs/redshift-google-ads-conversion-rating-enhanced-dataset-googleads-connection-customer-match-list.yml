@@ -1,0 +1,64 @@
+---
+sync:redshift-google-ads-conversion-rating-enhanced-dataset-googleads-connection-customer-match-list:
+  paused: false
+  behavior:
+    operation: mirror
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
+  destination:
+    connection_identifier: destination:google-ads
+    object_identifier: user_data
+  source:
+    type: dataset
+    connection_identifier: data_warehouse:redshift
+    object_identifier: dataset:testhhhh
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: email_hash
+    to:
+      field_name: user_identifier.hashed_email_PREHASHED
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: ad_personalization
+    to:
+      field_name: ad_personalization_consent_status
+  - from:
+      type: column
+      data:
+        column_name: ad_user_data
+    to:
+      field_name: ad_user_data_consent_status
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: Census_Test
+    to:
+      field_name: user_list_id
+      lookup_object:
+        object_identifier: user_list
+        field_to_match_by: name
+    array_field: true
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
+  sync_behavior_family: mapRecords
