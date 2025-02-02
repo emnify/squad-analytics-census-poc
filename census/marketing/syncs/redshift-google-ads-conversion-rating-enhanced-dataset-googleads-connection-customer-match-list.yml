@@ -1,6 +1,6 @@
 ---
 sync:redshift-google-ads-conversion-rating-enhanced-dataset-googleads-connection-customer-match-list:
-  paused: false
+  paused: true
   label: simple_audience_sync
   behavior:
     operation: mirror
