@@ -2,30 +2,14 @@
 dataset:test-google-ads-conversion-enhanced-rating:
   type: sql
   name: google_ads_conversion_rating_dataset
-  query: |-
-    SELECT
-        '0019V00000kdByQQAU' AS id,
-        'Account' AS sobject,
-        'Prospecting' AS stage_name,
-        'EAIaIQobChMI8Zz9' AS gclid_c,
-        4.5 AS conversion_rating,
-        '2023-10-01 12:34:56' AS cet_timestamp
-    UNION ALL
-    SELECT
-        '0019V00000kciiIQAQ' AS id,
-        'Contact' AS sobject,
-        'Qualification' AS stage_name,
-        'EAIaIQobChMI9Zz8' AS gclid_c,
-        3.8 AS conversion_rating,
-        '2023-10-02 14:22:33' AS cet_timestamp
-    UNION ALL
-    SELECT
-        '0019V00000kdByJQAU' AS id,
-        'Opportunity' AS sobject,
-        'Closed Won' AS stage_name,
-        'EAIaIQobChMI7Zz7' AS gclid_c,
-        5.0 AS conversion_rating,
-        '2023-10-03 16:45:12' AS cet_timestamp;
+  query: "SELECT \n    'Cj0KCQiA-aK8BhCDARIsAL-_H9keogPWmAJal-F_MvdZbWQ9v8U0FWS7rSrKAe0zbmIdiE5XUE6G_ioaAkm7EALw_wcB'
+    AS gclid, \n    'SFU: Converted' AS conversion_action, \n    'Feb 1, 2025 0:50:26
+    PM UTC' AS timestamp, \n    0.00 AS value\nUNION ALL\nSELECT \n    'Cj0KCQiA-aK8BhCDARIsAL-_H9keogPWmAJal-F_MvdZbWQ9v8U0FWS7rSrKAe0zbmIdiE5XUE6G_ioaAkm7EALw_wcB'
+    AS gclid, \n    'SFU: Sales Qualified Lead' AS conversion_action, \n    'Feb 1,
+    2025 0:50:14 PM UTC' AS timestamp, \n    150.00 AS value\nUNION ALL\nSELECT \n
+    \   'Cj0KCQiAhvK8BhDfARIsABsPy4j_PyhUtVwsBNu36ZS6RV3j_yUoNQcYA06dI7DH5D9wE1avU-LH9pkaAmFXEALw_wcB'
+    AS gclid, \n    'SFU: Sales Qualified Lead' AS conversion_action, \n    'Jan 31,
+    2025 9:27:35 PM UTC' AS timestamp, \n    100.00 AS value\n"
   description:
   icon:
   connection: data_warehouse:redshift
