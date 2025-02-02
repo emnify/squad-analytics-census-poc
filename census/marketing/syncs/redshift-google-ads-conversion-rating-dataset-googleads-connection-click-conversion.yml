@@ -1,0 +1,77 @@
+---
+sync:redshift-google-ads-conversion-rating-dataset-googleads-connection-click-conversion:
+  paused: false
+  behavior:
+    operation: upsert
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
+  destination:
+    connection_identifier: destination:google-ads
+    object_identifier: click_conversion_with_compound_key
+  source:
+    type: dataset
+    connection_identifier: data_warehouse:redshift
+    object_identifier: dataset:test-google-ads-conversion-enhanced-rating
+  mappings:
+  - from:
+      type: compound
+      data:
+        subexpressions:
+        - type: column
+          data:
+            column_name: gclid
+        - type: column
+          data:
+            column_name: timestamp
+        - type: column
+          data:
+            column_name: conversion_action
+    to:
+      field_name: click_conversion._census_tracking_id
+    is_primary_identifier: true
+  - from:
+      type: column
+      data:
+        column_name: conversion_action
+    to:
+      field_name: click_conversion.conversion_action
+      lookup_object:
+        object_identifier: conversion_action
+        field_to_match_by: name
+  - from:
+      type: column
+      data:
+        column_name: gclid
+    to:
+      field_name: click_conversion.gclid
+  - from:
+      type: column
+      data:
+        column_name: timestamp
+    to:
+      field_name: click_conversion.conversion_date_time
+  - from:
+      type: column
+      data:
+        column_name: value
+    to:
+      field_name: click_conversion.conversion_value
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
+  sync_behavior_family: mapRecords
