@@ -108,6 +108,6 @@ sync:slav-test-google-ads-enhanced:
       should_send_recovery: true
       options:
         threshold: 10
-        unit: hours
+        unit: minutes
         start_type: actual
   sync_behavior_family: mapRecords
