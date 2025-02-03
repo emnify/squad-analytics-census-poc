@@ -98,5 +98,9 @@ sync:slav-test-google-ads-enhanced:
   advanced_configuration:
     input_value_mode: true
   operational_settings:
-    alerts: []
+    alerts:
+    - type: FullSyncTriggerAlertConfiguration
+      send_for: every_time
+      should_send_recovery: false
+      options: {}
   sync_behavior_family: mapRecords
