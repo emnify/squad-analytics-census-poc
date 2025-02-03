@@ -99,10 +99,6 @@ sync:slav-test-google-ads-enhanced:
     input_value_mode: true
   operational_settings:
     alerts:
-    - type: FailureAlertConfiguration
-      send_for: first_time
-      should_send_recovery: true
-      options: {}
     - type: InvalidRecordPercentAlertConfiguration
       send_for: first_time
       should_send_recovery: true
