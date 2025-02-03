@@ -24,9 +24,9 @@ sync:redshift-dreamdata-companies-linkedin-connection-company-list:
   - from:
       type: column
       data:
-        column_name: company_page_url
+        column_name: company_website_domain
     to:
-      field_name: companyPageUrl
+      field_name: companyWebsiteDomain
     is_primary_identifier: true
   - from:
       type: column
@@ -40,12 +40,6 @@ sync:redshift-dreamdata-companies-linkedin-connection-company-list:
         column_name: company_page_url
     to:
       field_name: organizationUrn
-  - from:
-      type: column
-      data:
-        column_name: company_website_domain
-    to:
-      field_name: companyWebsiteDomain
   - from:
       type: column
       data:
@@ -73,4 +67,3 @@ sync:redshift-dreamdata-companies-linkedin-connection-company-list:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
