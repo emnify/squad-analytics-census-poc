@@ -14,7 +14,7 @@ sync:redshift-google-ads-conversion-rating-dataset-googleads-connection-click-co
       schedule:
         frequency: never
   destination:
-    connection_identifier: destination:google-ads
+    connection_identifier: destination:google-ads-1
     object_identifier: click_conversion_with_compound_key
   source:
     type: dataset
@@ -75,4 +75,3 @@ sync:redshift-google-ads-conversion-rating-dataset-googleads-connection-click-co
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
