@@ -1,7 +1,7 @@
 ---
 sync:slack-destiantion-poc:
   paused: false
-  label: slack_destiantion_poc
+  label: slack_invited_users
   behavior:
     operation: append
     append_properties:
@@ -43,8 +43,6 @@ sync:slack-destiantion-poc:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
-      tehre is an alert for the {{account_id}} which aas an issue "}}]}'
     rich_message:
       type: doc
       content:
@@ -59,6 +57,8 @@ sync:slack-destiantion-poc:
             label: account_id
         - text: " which aas an issue "
           type: text
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
+      tehre is an alert for the {{account_id}} which aas an issue "}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
