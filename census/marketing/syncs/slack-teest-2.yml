@@ -1,0 +1,93 @@
+---
+sync:slack-teest-2:
+  paused: false
+  label: slack_teest_2
+  behavior:
+    operation: append
+    append_properties:
+      backfill_records: false
+  mapping_configuration:
+    sync_all_source_columns:
+      enabled: false
+      mode: add_only
+  mode:
+    type: triggered
+    triggers:
+      schedule:
+        frequency: never
+  destination:
+    connection_identifier: destination:slack
+    object_identifier: message
+  source:
+    type: table
+    connection_identifier: data_warehouse:redshift
+    table_catalog: dw
+    table_schema: census_poc
+    table_name: step_fucntions_account_update
+  mappings:
+  - from:
+      type: column
+      data:
+        column_name: id
+    to:
+      field_name: message_id
+    is_primary_identifier: true
+  - from:
+      type: constant
+      data:
+        basic_type: text
+        value: C08B9GLNCK0
+    to:
+      field_name: channel_id
+      lookup_object:
+        object_identifier: channel
+        field_to_match_by: id
+  advanced_configuration:
+    rich_message:
+      type: doc
+      content:
+      - type: paragraph
+        content:
+        - type: mention
+          attrs:
+            id: "{{org_status_c}}"
+            label: org_status__c
+            icon:
+      - type: paragraph
+        content:
+        - type: mention
+          attrs:
+            id: "{{id}}"
+            label: id
+            icon:
+        - type: mention
+          attrs:
+            id: "{{registered_sims_c}}"
+            label: registered_sims__c
+            icon:
+        - type: mention
+          attrs:
+            id: "{{factory_test_sims_c}}"
+            label: factory_test_sims__c
+            icon:
+        - type: mention
+          attrs:
+            id: "{{active_sims_c}}"
+            label: active_sims__c
+            icon:
+        - type: text
+          text: " has been triggered!"
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
+      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
+  operational_settings:
+    alerts:
+    - type: FailureAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options: {}
+    - type: InvalidRecordPercentAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 75
+  sync_behavior_family: mapRecords
