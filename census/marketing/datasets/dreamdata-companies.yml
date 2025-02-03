@@ -1,7 +1,7 @@
 ---
 dataset:dreamdata-companies:
   type: sql
-  name: Dreamdata_Companies
+  name: Dreamdata_Companies_dataset
   query: "SELECT\r\n    'LinkedIn' AS company_name,\r\n    'linkedin.com' AS company_website_domain,\r\n
     \   'www.linkedin.com/company/linkedin' AS company_page_url,\r\n    'information
     technology' AS industry,\r\n    'US' AS country,\r\n     'c7733a8c-f69a-4b4d-bed3-014fbbf34bf1'
