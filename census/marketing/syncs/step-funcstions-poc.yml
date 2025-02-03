@@ -103,7 +103,7 @@ sync:step-funcstions-poc:
     alerts:
     - type: FailureAlertConfiguration
       send_for: every_time
-      should_send_recovery: true
+      should_send_recovery: false
       options: {}
     - type: InvalidRecordPercentAlertConfiguration
       send_for: first_time
