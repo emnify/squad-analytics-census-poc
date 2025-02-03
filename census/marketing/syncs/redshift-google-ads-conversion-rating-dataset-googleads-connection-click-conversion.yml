@@ -1,7 +1,7 @@
 ---
 sync:redshift-google-ads-conversion-rating-dataset-googleads-connection-click-conversion:
   paused: true
-  label: advanced_sync
+  label: google_ads_conversion_advanced
   behavior:
     operation: upsert
   mapping_configuration:
