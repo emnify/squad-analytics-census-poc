@@ -61,7 +61,7 @@ sync:redshift-dreamdata-contacts-linkedin-connection-user-list:
       type: constant
       data:
         basic_type: text
-        value: Census_Test
+        value: Dreamdata_Contacts
     to:
       field_name: segment_id
       lookup_object:
@@ -84,4 +84,3 @@ sync:redshift-dreamdata-contacts-linkedin-connection-user-list:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
