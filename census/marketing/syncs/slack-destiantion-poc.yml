@@ -21,9 +21,9 @@ sync:slack-destiantion-poc:
     connection_identifier: destination:slack
     object_identifier: message
   source:
-    type: segment
+    type: dataset
     connection_identifier: data_warehouse:redshift
-    object_identifier: segment:invited-users-segment
+    object_identifier: dataset:public-user
   mappings:
   - from:
       type: column
@@ -43,22 +43,22 @@ sync:slack-destiantion-poc:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
+      tehre is an alert for the {{account_id}} which aas an issue "}}]}'
     rich_message:
       type: doc
       content:
       - type: paragraph
         content:
-        - type: text
-          text: 'Hello, tehre is an alert for the '
+        - text: 'Hello, tehre is an alert for the '
+          type: text
         - type: mention
           attrs:
             id: "{{account_id}}"
-            label: account_id
             icon:
-        - type: text
-          text: " which aas an issue "
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
-      tehre is an alert for the {{account_id}} which aas an issue "}}]}'
+            label: account_id
+        - text: " which aas an issue "
+          type: text
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
@@ -70,4 +70,3 @@ sync:slack-destiantion-poc:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
