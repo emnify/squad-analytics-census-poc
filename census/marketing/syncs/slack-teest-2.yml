@@ -1,7 +1,7 @@
 ---
 sync:slack-teest-2:
   paused: false
-  label: slack_teest_2
+  label: slack_account_update
   behavior:
     operation: append
     append_properties:
@@ -43,8 +43,6 @@ sync:slack-teest-2:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
-      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
     rich_message:
       type: doc
       content:
@@ -79,6 +77,8 @@ sync:slack-teest-2:
             label: active_sims__c
         - text: " has been triggered!"
           type: text
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
+      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
