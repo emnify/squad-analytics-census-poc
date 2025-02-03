@@ -48,7 +48,7 @@ sync:redshift-invited-users-dataset-slackv2-connection-message:
       - type: paragraph
         content:
         - type: text
-          text: 'Hello, there is an alert for the '
+          text: 'Hello, tehre is an alert for the '
         - type: mention
           attrs:
             id: "{{account_id}}"
@@ -57,7 +57,7 @@ sync:redshift-invited-users-dataset-slackv2-connection-message:
         - type: text
           text: " which aas an issue "
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
-      there is an alert for the {{account_id}} which aas an issue "}}]}'
+      tehre is an alert for the {{account_id}} which aas an issue "}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
@@ -69,4 +69,3 @@ sync:redshift-invited-users-dataset-slackv2-connection-message:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
