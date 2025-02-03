@@ -103,4 +103,11 @@ sync:slav-test-google-ads-enhanced:
       send_for: every_time
       should_send_recovery: true
       options: {}
+    - type: RuntimeAlertConfiguration
+      send_for: first_time
+      should_send_recovery: true
+      options:
+        threshold: 10
+        unit: hours
+        start_type: actual
   sync_behavior_family: mapRecords
