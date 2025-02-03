@@ -103,8 +103,4 @@ sync:slav-test-google-ads-enhanced:
       send_for: first_time
       should_send_recovery: true
       options: {}
-    - type: FullSyncTriggerAlertConfiguration
-      send_for: every_time
-      should_send_recovery: false
-      options: {}
   sync_behavior_family: mapRecords
