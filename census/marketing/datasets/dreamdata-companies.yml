@@ -1,0 +1,17 @@
+---
+dataset:dreamdata-companies:
+  type: sql
+  name: Dreamdata_Companies
+  query: "SELECT\r\n    'LinkedIn' AS company_name,\r\n    'linkedin.com' AS company_website_domain,\r\n
+    \   'www.linkedin.com/company/linkedin' AS company_page_url,\r\n    'information
+    technology' AS industry,\r\n    'US' AS country,\r\n     'c7733a8c-f69a-4b4d-bed3-014fbbf34bf1'
+    AS audience_id\r\nUNION ALL\r\nSELECT\r\n    'Google' AS company_name,\r\n    'google.com'
+    AS company_website_domain,\r\n    'www.google.com' AS company_page_url,\r\n    'technology'
+    AS industry,\r\n    'US' AS country,\r\n      'c7733a8c-f69a-4b4d-bed3-014fbbf34bf2'
+    AS audience_id\r\nUNION ALL\r\nSELECT\r\n    'Census' AS company_name,\r\n    'getcensus.com'
+    AS company_website_domain,\r\n    'www.getcensus.com' AS company_page_url,\r\n
+    \   'saas' AS industry,\r\n    'US' AS country,\r\n    'c7733a8c-f69a-4b4d-bed3-014fbbf34bf3'
+    AS audience_id"
+  description:
+  icon:
+  connection: data_warehouse:redshift
