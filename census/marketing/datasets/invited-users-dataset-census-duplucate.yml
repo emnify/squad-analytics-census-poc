@@ -1,7 +1,7 @@
 ---
 dataset:invited-users-dataset-census-duplucate:
   type: sql
-  name: invited_users_dataset (Census Duplucate)
+  name: invited_users_dataset (Census Duplicate)
   query: "SELECT \n      salesforce_account.id AS account_id,\n      CASE \n          WHEN
     REGEXP_REPLACE(SPLIT_PART(public_user.name, ' ', 2), '[[:space:]]+', '') = ''
     \n              THEN NULL\n          ELSE SPLIT_PART(public_user.name, ' ', 1)\n
