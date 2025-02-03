@@ -39,7 +39,7 @@ sync:redshift-dreamdata-companies-linkedin-connection-company-list:
       data:
         column_name: company_page_url
     to:
-      field_name: organizationUrn
+      field_name: companyPageUrl
   - from:
       type: column
       data:
