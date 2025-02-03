@@ -1,0 +1,35 @@
+---
+dataset:invited-users-dataset-census-duplucate:
+  type: sql
+  name: invited_users_dataset (Census Duplucate)
+  query: "SELECT \n      salesforce_account.id AS account_id,\n      CASE \n          WHEN
+    REGEXP_REPLACE(SPLIT_PART(public_user.name, ' ', 2), '[[:space:]]+', '') = ''
+    \n              THEN NULL\n          ELSE SPLIT_PART(public_user.name, ' ', 1)\n
+    \     END AS first_name,\n      CASE \n          WHEN LOWER(public_user.name)
+    ~* '@' \n              THEN public_user.username\n          WHEN REGEXP_REPLACE(SPLIT_PART(public_user.name,
+    ' ', 2), '[[:space:]]+', '') = '' \n              THEN public_user.name\n          ELSE
+    SPLIT_PART(public_user.name, ' ', 2)\n      END AS last_name,\n      CASE \n        WHEN
+    LOWER(public_user.username) ~* '@' THEN LOWER(public_user.username)\n        ELSE
+    public_user.name\n      END AS email, \n      CASE \n          WHEN salesforce_user.is_active
+    = 'f'\n              THEN salesforce_account.owner_id\n          ELSE '0051v0000054iqUAAQ'\n
+    \     END AS owner_id,\n      organisation_id::VARCHAR,                                              \n
+    \     public_user.name,\n      public_user.created AS created_at,\n      public_organisation.name
+    AS portal_name, \n      salesforce_account.name AS sfdc_name,\n      salesforce_user.is_active
+    AS user_is_active,   \n      salesforce_account.is_deleted AS account_is_deleted,\n
+    \     ('https://emnify.lightning.force.com/lightning/r/Account/' || salesforce_account.id
+    || '/view') AS sfdc_link\nFROM dw.census_poc.public_user\nLEFT JOIN dw.census_poc.public_organisation\nUSING
+    (organisation_id)\nLEFT JOIN dw.census_poc.salesforce_account\nON salesforce_account.org_id_c
+    = public_user.organisation_id\nLEFT JOIN dw.census_poc.salesforce_user\nON salesforce_account.owner_id
+    = salesforce_user.id\nWHERE 1=1\nAND LOWER(public_user.username) NOT IN ( \n                  SELECT
+    DISTINCT email\n                  FROM dw.census_poc.salesforce_contact\n                  WHERE
+    1=1\n                  AND email IS NOT NULL\n                  AND email <> 'user_198488@1609.com'\n
+    \                 )\nAND public_user.username IS NOT NULL\nAND REGEXP_REPLACE(public_user.username,
+    '[[:space:]]+', '') <> ''\nAND LOWER(public_user.username) || public_organisation.name
+    NOT LIKE '%emnify%'\nAND LOWER(public_user.username) || public_organisation.name
+    NOT LIKE '%test%'\nAND salesforce_account.id IS NOT NULL\nAND LOWER(salesforce_account.name)
+    NOT LIKE '%emnify%'\nAND LOWER(salesforce_account.name) NOT LIKE '%test%'\nAND
+    salesforce_account.is_deleted = 'f'\nORDER BY \n        public_user.created DESC,
+    \n        salesforce_account.id"
+  description:
+  icon:
+  connection: data_warehouse:redshift
