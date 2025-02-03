@@ -43,8 +43,6 @@ sync:slack-teest-2:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
-      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
     rich_message:
       type: doc
       content:
@@ -79,6 +77,8 @@ sync:slack-teest-2:
             label: active_sims__c
         - text: " has been triggered!"
           type: text
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
+      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
@@ -90,6 +90,11 @@ sync:slack-teest-2:
       should_send_recovery: true
       options:
         threshold: 75
+    - type: StatusAlertConfiguration
+      send_for: every_time
+      should_send_recovery: false
+      options:
+        status_name: started
     - type: StatusAlertConfiguration
       send_for: every_time
       should_send_recovery: false
