@@ -51,32 +51,32 @@ sync:slack-teest-2:
         - type: mention
           attrs:
             id: "{{org_status_c}}"
-            label: org_status__c
             icon:
+            label: org_status__c
       - type: paragraph
         content:
         - type: mention
           attrs:
             id: "{{id}}"
-            label: id
             icon:
+            label: id
         - type: mention
           attrs:
             id: "{{registered_sims_c}}"
-            label: registered_sims__c
             icon:
+            label: registered_sims__c
         - type: mention
           attrs:
             id: "{{factory_test_sims_c}}"
-            label: factory_test_sims__c
             icon:
+            label: factory_test_sims__c
         - type: mention
           attrs:
             id: "{{active_sims_c}}"
-            label: active_sims__c
             icon:
-        - type: text
-          text: " has been triggered!"
+            label: active_sims__c
+        - text: " has been triggered!"
+          type: text
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
       {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
   operational_settings:
@@ -90,4 +90,9 @@ sync:slack-teest-2:
       should_send_recovery: true
       options:
         threshold: 75
+    - type: StatusAlertConfiguration
+      send_for: every_time
+      should_send_recovery: false
+      options:
+        status_name: started
   sync_behavior_family: mapRecords
