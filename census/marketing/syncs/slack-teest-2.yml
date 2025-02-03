@@ -28,7 +28,7 @@ sync:slack-teest-2:
   - from:
       type: column
       data:
-        column_name: id
+        column_name: monthly_sms_usage_per_sim__c
     to:
       field_name: message_id
     is_primary_identifier: true
@@ -43,6 +43,8 @@ sync:slack-teest-2:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
+      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
     rich_message:
       type: doc
       content:
@@ -77,8 +79,6 @@ sync:slack-teest-2:
             label: active_sims__c
         - text: " has been triggered!"
           type: text
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"{{org_status_c}}"}},{"type":"section","text":{"type":"mrkdwn","text":"{{id}}
-      {{registered_sims_c}} {{factory_test_sims_c}} {{active_sims_c}} has been triggered!"}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
