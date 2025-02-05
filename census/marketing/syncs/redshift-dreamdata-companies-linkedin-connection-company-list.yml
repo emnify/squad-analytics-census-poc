@@ -1,6 +1,6 @@
 ---
 sync:redshift-dreamdata-companies-linkedin-connection-company-list:
-  paused: false
+  paused: true
   label: Dreamdata_Companies
   behavior:
     operation: mirror
