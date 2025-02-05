@@ -1,6 +1,6 @@
 ---
 sync:slack-destiantion-poc:
-  paused: true
+  paused: false
   label: slack_invited_users
   behavior:
     operation: append
