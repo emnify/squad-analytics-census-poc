@@ -1,7 +1,7 @@
 ---
 dataset:dreamdata-contacts:
   type: sql
-  name: dreamdata_contacts1_dataset
+  name: dreamdata_contacts_dataset
   query: "SELECT\r\n    'Census' AS company,\r\n    'US' AS country_code,\r\n    'tony.sidhom@getcensus.com'
     AS email,\r\n    'tony' AS first_name,\r\n    'sidhom' AS last_name,\r\n    '53c33438be0fdd7041759e5c90ee6b433063053ecb01af9fd12b273c1ef2a6ce'
     AS email_sha256,\r\n    'Account Executive' AS title,\r\n    'c7733a8c-f69a-4b4d-bed3-014fbbf34bf1'
