@@ -14,24 +14,24 @@ dataset:public-user:
     salesforce_user.is_active = 'f'\r\n              THEN salesforce_account.owner_id\r\n
     \         ELSE '0051v0000054iqUAAQ'\r\n      END AS owner_id,\r\n      organisation_id::VARCHAR,
     \                                             \r\n      public_user.name,\r\n
-    \     public_user.created AS created_at,\r\n      public_organisation.name AS
-    portal_name, \r\n      salesforce_account.name AS sfdc_name,\r\n      salesforce_user.is_active
-    AS user_is_active,   \r\n      salesforce_account.is_deleted AS account_is_deleted,\r\n
-    \     ('https://emnify.lightning.force.com/lightning/r/Account/' || salesforce_account.id
-    || '/view') AS sfdc_link\r\nFROM dw.census_poc.public_user\r\nLEFT JOIN dw.census_poc.public_organisation\r\nUSING
-    (organisation_id)\r\nLEFT JOIN dw.census_poc.salesforce_account\r\nON salesforce_account.org_id_c
-    = public_user.organisation_id\r\nLEFT JOIN dw.census_poc.salesforce_user\r\nON
-    salesforce_account.owner_id = salesforce_user.id\r\nWHERE 1=1\r\nAND LOWER(public_user.username)
-    NOT IN ( \r\n                  SELECT DISTINCT email\r\n                  FROM
-    dw.census_poc.salesforce_contact\r\n                  WHERE 1=1\r\n                  AND
-    email IS NOT NULL\r\n                  AND email <> 'user_198488@1609.com'\r\n
-    \                 )\r\nAND public_user.username IS NOT NULL\r\nAND REGEXP_REPLACE(public_user.username,
-    '[[:space:]]+', '') <> ''\r\nAND LOWER(public_user.username) || public_organisation.name
-    NOT LIKE '%emnify%'\r\nAND LOWER(public_user.username) || public_organisation.name
-    NOT LIKE '%test%'\r\nAND salesforce_account.id IS NOT NULL\r\nAND LOWER(salesforce_account.name)
-    NOT LIKE '%emnify%'\r\nAND LOWER(salesforce_account.name) NOT LIKE '%test%'\r\nAND
-    salesforce_account.is_deleted = 'f'\r\nORDER BY \r\n        public_user.created
-    DESC, \r\n        salesforce_account.id"
+    \     to_timestamp(public_user.created, 'YYYY-MM-DD HH24:MI:SS')  AS created_at,\r\n
+    \     public_organisation.name AS portal_name, \r\n      salesforce_account.name
+    AS sfdc_name,\r\n      salesforce_user.is_active AS user_is_active,   \r\n      salesforce_account.is_deleted
+    AS account_is_deleted,\r\n      ('https://emnify.lightning.force.com/lightning/r/Account/'
+    || salesforce_account.id || '/view') AS sfdc_link\r\nFROM dw.census_poc.public_user\r\nLEFT
+    JOIN dw.census_poc.public_organisation\r\nUSING (organisation_id)\r\nLEFT JOIN
+    dw.census_poc.salesforce_account\r\nON salesforce_account.org_id_c = public_user.organisation_id\r\nLEFT
+    JOIN dw.census_poc.salesforce_user\r\nON salesforce_account.owner_id = salesforce_user.id\r\nWHERE
+    1=1\r\nAND LOWER(public_user.username) NOT IN ( \r\n                  SELECT DISTINCT
+    email\r\n                  FROM dw.census_poc.salesforce_contact\r\n                  WHERE
+    1=1\r\n                  AND email IS NOT NULL\r\n                  AND email
+    <> 'user_198488@1609.com'\r\n                  )\r\nAND public_user.username IS
+    NOT NULL\r\nAND REGEXP_REPLACE(public_user.username, '[[:space:]]+', '') <> ''\r\nAND
+    LOWER(public_user.username) || public_organisation.name NOT LIKE '%emnify%'\r\nAND
+    LOWER(public_user.username) || public_organisation.name NOT LIKE '%test%'\r\nAND
+    salesforce_account.id IS NOT NULL\r\nAND LOWER(salesforce_account.name) NOT LIKE
+    '%emnify%'\r\nAND LOWER(salesforce_account.name) NOT LIKE '%test%'\r\nAND salesforce_account.is_deleted
+    = 'f'\r\nORDER BY \r\n        public_user.created DESC, \r\n        salesforce_account.id"
   description:
   icon:
   connection: data_warehouse:redshift
