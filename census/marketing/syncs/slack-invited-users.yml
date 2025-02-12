@@ -1,6 +1,6 @@
 ---
 sync:slack-invited-users:
-  paused: false
+  paused: true
   label: No High Water Mark
   behavior:
     operation: append
