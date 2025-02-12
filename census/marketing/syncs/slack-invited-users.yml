@@ -68,4 +68,3 @@ sync:slack-invited-users:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
