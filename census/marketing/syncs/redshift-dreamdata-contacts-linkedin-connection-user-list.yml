@@ -1,6 +1,6 @@
 ---
 sync:redshift-dreamdata-contacts-linkedin-connection-user-list:
-  paused: true
+  paused: false
   label: Dreamdata_Contacts
   behavior:
     operation: mirror
