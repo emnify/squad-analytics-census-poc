@@ -5,7 +5,7 @@ sync:slack-invited-users-1:
   behavior:
     operation: append
     append_properties:
-      backfill_records: false
+      backfill_records: true
       high_water_mark:
         column_name: created_at
   mapping_configuration:
@@ -43,6 +43,8 @@ sync:slack-invited-users-1:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
+      there is an alert for the {{account_id}} which has an issue!"}}]}'
     rich_message:
       type: doc
       content:
@@ -57,8 +59,6 @@ sync:slack-invited-users-1:
             label: account_id
         - text: " which has an issue!"
           type: text
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
-      there is an alert for the {{account_id}} which has an issue!"}}]}'
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
@@ -70,4 +70,3 @@ sync:slack-invited-users-1:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
