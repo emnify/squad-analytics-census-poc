@@ -1,7 +1,7 @@
 ---
 sync:slack-invited-users-1:
   paused: false
-  label: slack_invited_users
+  label: slack_invited_users_new
   behavior:
     operation: append
     append_properties:
@@ -48,15 +48,15 @@ sync:slack-invited-users-1:
       content:
       - type: paragraph
         content:
-        - type: text
-          text: 'Hello, there is an alert for the '
+        - text: 'Hello, there is an alert for the '
+          type: text
         - type: mention
           attrs:
             id: "{{account_id}}"
-            label: account_id
             icon:
-        - type: text
-          text: " which has an issue!"
+            label: account_id
+        - text: " which has an issue!"
+          type: text
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
       there is an alert for the {{account_id}} which has an issue!"}}]}'
   operational_settings:
