@@ -43,22 +43,22 @@ sync:slack-invited-users-2:
         object_identifier: channel
         field_to_match_by: id
   advanced_configuration:
+    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
+      there is an alert for the {{account_id}} which has an issue!"}}]}'
     rich_message:
       type: doc
       content:
       - type: paragraph
         content:
-        - type: text
-          text: 'Hello, there is an alert for the '
+        - text: 'Hello, there is an alert for the '
+          type: text
         - type: mention
           attrs:
             id: "{{account_id}}"
-            label: account_id
             icon:
-        - type: text
-          text: " which has an issue!"
-    message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
-      there is an alert for the {{account_id}} which has an issue!"}}]}'
+            label: account_id
+        - text: " which has an issue!"
+          type: text
   operational_settings:
     alerts:
     - type: FailureAlertConfiguration
@@ -70,4 +70,3 @@ sync:slack-invited-users-2:
       should_send_recovery: true
       options:
         threshold: 75
-  sync_behavior_family: mapRecords
