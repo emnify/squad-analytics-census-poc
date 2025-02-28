@@ -1,6 +1,6 @@
 ---
 sync:redshift-invited-users-dataset-slackv2-connection-message:
-  paused: true
+  paused: false
   behavior:
     operation: append
     append_properties:
