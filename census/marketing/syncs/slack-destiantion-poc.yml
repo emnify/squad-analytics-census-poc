@@ -5,7 +5,7 @@ sync:slack-destiantion-poc:
   behavior:
     operation: append
     append_properties:
-      backfill_records: true
+      backfill_records: false
       high_water_mark:
         column_name: created_at
   mapping_configuration:
