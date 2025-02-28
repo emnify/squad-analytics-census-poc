@@ -1,6 +1,6 @@
 ---
 sync:redshift-invited-users-dataset-slackv2-connection-message:
-  paused: false
+  paused: true
   behavior:
     operation: append
     append_properties:
@@ -47,15 +47,15 @@ sync:redshift-invited-users-dataset-slackv2-connection-message:
       content:
       - type: paragraph
         content:
-        - type: text
-          text: 'Hello, tehre is an alert for the '
+        - text: 'Hello, tehre is an alert for the '
+          type: text
         - type: mention
           attrs:
             id: "{{account_id}}"
-            label: account_id
             icon:
-        - type: text
-          text: " which aas an issue "
+            label: account_id
+        - text: " which aas an issue "
+          type: text
     message_template: '{"blocks":[{"type":"section","text":{"type":"mrkdwn","text":"Hello,
       tehre is an alert for the {{account_id}} which aas an issue "}}]}'
   operational_settings:
