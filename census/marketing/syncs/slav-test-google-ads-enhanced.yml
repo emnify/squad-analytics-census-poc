@@ -107,7 +107,7 @@ sync:slav-test-google-ads-enhanced:
       send_for: first_time
       should_send_recovery: true
       options:
-        threshold: 4
         unit: minutes
+        threshold: 4
         start_type: actual
   sync_behavior_family: mapRecords
